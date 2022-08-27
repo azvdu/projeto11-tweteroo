@@ -11,10 +11,20 @@ let tweets = []
 app.post('/sign-up', (req, res) => {
     const user = req.body
     if(!user.avatar || !user.username){
-        res.sendStatus(400)
+        return res.sendStatus(400)
     }
     users.push(user)
-    res.sendStatus(200)
+    return res.sendStatus(200)
+})
+
+app.post('/tweets', (req, res) => {
+    const tweet = req.body
+    if(!tweet.username || !tweet.tweet){
+        return res.sendStatus(400)
+    }
+
+    tweets.push(tweet)
+    return res.sendStatus(200)
 })
 
 const PORT = 5000
